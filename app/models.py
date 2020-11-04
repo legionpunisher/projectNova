@@ -12,3 +12,16 @@ class Hood(models.Model):
     occupants_count = models.PositiveIntegerField(default=0)
     location = models.ForeignKey(Location, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
+    @classmethod
+    def get_hoods(cls):
+        hoods = Hood.objects.all()
+        return hoods
+
+    @classmethod
+    def search_hood(cls,hood_search):
+        hoods = cls.objects.filter(id__icontains = hood_search)
+        return hoods
+
+    class Meta:
+        ordering = ['hood_name']
