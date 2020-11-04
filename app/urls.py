@@ -18,5 +18,7 @@ urlpatterns = [
     url(r'^deletehood/(\d+)', views.delete_hood, name='delete_hood'),
     url(r'^updatehood/(\d+)', views.update_hood, name='update_hood'),
     url(r'^occupants/(?P<hood_id>\d+)', views.occupants, name='occupants'),
-
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
