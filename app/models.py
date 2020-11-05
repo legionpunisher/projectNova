@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from cloudinary.models import CloudinaryField
 # Create your models here.
 class Location(models.Model):
     name = models.CharField(max_length=100,null=True)
@@ -9,7 +10,7 @@ class Location(models.Model):
     def __str__(self):
         return self.name
 class Hood(models.Model):
-    hood_photo = models.ImageField(upload_to='hoods/')
+    hood_photo = CloudinaryField('hoods/')
     hood_name = models.CharField(max_length=100, null=True)
     occupants_count = models.PositiveIntegerField(default=0)
     location = models.ForeignKey(Location, null=True)
@@ -29,7 +30,7 @@ class Hood(models.Model):
         ordering = ['hood_name']
 
 class Business(models.Model):
-    b_photo = models.ImageField(upload_to='business/',null=True)
+    b_photo =CloudinaryField('business/',null=True)
     b_name = models.CharField(max_length=100, blank=True, null=True)
     b_description = models.TextField(max_length=200, blank=True, null=True)
     b_email = models.CharField(max_length=100, blank=True, null=True)
@@ -42,7 +43,7 @@ class Business(models.Model):
         return business
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
-    profile_photo= models.ImageField(upload_to='profiles/',null=True)
+    profile_photo= CloudinaryField('profiles/',null=True)
     bio= models.CharField(max_length=240, null=True)
     email = models.CharField(max_length=100, blank=True, null=True)
 

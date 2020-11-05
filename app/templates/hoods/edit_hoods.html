@@ -1,24 +1,17 @@
-{%extends 'base.html'%}
-{% block content %}
-{{ block.super}}
-{% load bootstrap4 %}
+{%extends 'base.html'%} {% block content %} {{ block.super}} {% load bootstrap4 %} {% load cloudinary %}
 <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  <title>Add Hood</title>
-  {{form.media}}
+<title>Add Hood</title>
+{{form.media}}
 
 
 
 <div class="card mx-auto" style="max-width:50rem; margin-top:50px;">
-  <form  action="{%url 'update_hood'%}" method="post" enctype="multipart/form-data">
-    {%csrf_token%}
-
-    {% bootstrap_form form%}
-    <input type="submit" class="btn btn-success btn-lg" value="post">
-  </form>
+    <form action="{%url 'update_hood'%}" method="post" enctype="multipart/form-data">
+        {%csrf_token%} {% bootstrap_form form%}
+        <input type="submit" class="btn btn-success btn-lg" value="post">
+    </form>
 </div>
-   {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  {% bootstrap_javascript %}
-{% endblock %}
-{% endblock %}
+{% bootstrap_javascript %} {% endblock %} {% endblock %}

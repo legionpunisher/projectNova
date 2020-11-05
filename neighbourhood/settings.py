@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 from decouple import config,Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'bootstrap4',
     'app',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +142,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL='home'
 AUTH_PROFILE_MODULE = 'app.UserProfile'
+# cloudinary
+cloudinary.config( 
+  cloud_name = config('Cloud_name'), 
+  api_key = config('API_Key'),
+  api_secret = config('API_Secret')
+)

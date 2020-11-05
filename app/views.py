@@ -113,7 +113,7 @@ def search(request):
 
     else:
         message = "You Haven't searched for any hood"
-        return render(request, 'hood/search.html', {"message": message})
+        return render(request, 'hoods/search.html', {"message": message})
 
 
 @login_required(login_url='/accounts/login/')
